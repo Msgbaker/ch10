@@ -8,7 +8,7 @@ public class Fraction{
 	}
 
 	public Fraction (int n, int d){
-		numerator=n;
+		setNum(n);
 		setDen(d);
 	}
 	//////////
@@ -28,24 +28,45 @@ public class Fraction{
 		return denominator;
 	}
 	
+	public int GCF(){
+		//System.out.println(numerator+" () " +denominator);
+		int a=Math.max(numerator,denominator);
+		int b=Math.min(numerator,denominator);
+		while(a!=b){ 
+			System.out.println(a + " () " + b);
+			a=a-b;
+			a=Math.max(a,b);
+			b=Math.min(a,b);
+		}
+		System.out.println("the big a " + a);
+		return a;
+	}
+	
+	//////////////////
+	
 	public static Fraction mult(Fraction a, Fraction b){
 		int n=a.getNum()*b.getNum();
 		int d=a.getDen()*b.getDen();
 		return new Fraction(n,d);
 	}
 	
-	/////
-	
 	public static Fraction reduce(Fraction f){
-		int a=Math.max(f.getNum(),f.getDen);
-		int b=Math.min(f.getNum(),f.getDen);
-		while(a!=b){
-			a=a-b;
-			a=Math.max(a,b);
-			b=Math.min(a,b);
+		int n=0;
+		int d=0;
+		int gcf=f.GCF();
+
+		if(gcf>0){
+			n=f.getNum()/gcf;
+			d=f.getDen()/gcf;
+		} else{
+			n=f.getNum();
+			d=f.getDen();
+			System.out.println("Can't be reduced");
 		}
-		return new Fraction(f.getNum()/a,f.getNum()/a);
+		return new Fraction(n,d);
 	}
+	
+	/////
 	
 	public void setNum(int n){
 		numerator=n;
