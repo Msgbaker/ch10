@@ -29,16 +29,14 @@ public class Fraction{
 	}
 	
 	public int GCF(){
-		//System.out.println(numerator+" () " +denominator);
 		int a=Math.max(numerator,denominator);
 		int b=Math.min(numerator,denominator);
+		int temp=0;
 		while(a!=b){ 
-			System.out.println(a + " () " + b);
-			a=a-b;
-			a=Math.max(a,b);
-			b=Math.min(a,b);
+			temp=a-b;
+			a=Math.max(temp,b);
+			b=Math.min(temp,b);
 		}
-		System.out.println("the big a " + a);
 		return a;
 	}
 	
@@ -47,6 +45,24 @@ public class Fraction{
 	public static Fraction mult(Fraction a, Fraction b){
 		int n=a.getNum()*b.getNum();
 		int d=a.getDen()*b.getDen();
+		return new Fraction(n,d);
+	}
+	
+	public static Fraction divide(Fraction a, Fraction b){
+		int n=a.getNum()*b.getDen();
+		int d=a.getDen()*b.getNum();
+		return new Fraction(n,d);
+	}
+	
+	public static Fraction sub(Fraction a, Fraction b){
+		int d=a.getDen()*b.getDen();
+		int n=a.getNum()*b.getDen()-b.getNum()*a.getDen();
+		return new Fraction(n,d);
+	}
+	
+	public static Fraction sum(Fraction a, Fraction b){
+		int d=a.getDen()*b.getDen();
+		int n=a.getNum()*b.getDen()+b.getNum()*a.getDen();
 		return new Fraction(n,d);
 	}
 	
