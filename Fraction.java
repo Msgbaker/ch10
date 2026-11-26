@@ -12,7 +12,15 @@ public class Fraction {
         setNum(n);
         setDen(d);
     }
+    
+    public Fraction(String str){
+		int slash=str.indexOf("/");
+		setDen(Integer.parseInt(str.substring(0,slash)));
+		setNum(Integer.parseInt(str.substring(slash,str.length())));
+	}
+	
     //////////
+
     public String toString() {
         return numerator + "/" + denominator;
     }
@@ -44,6 +52,7 @@ public class Fraction {
     //////////////////
 
 	public static Fraction question(Fraction a, Fraction b){
+		String 
 	}
 	
     public static Fraction mult(Fraction a, Fraction b) {

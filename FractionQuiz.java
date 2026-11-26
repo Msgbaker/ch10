@@ -7,6 +7,7 @@ public class FractionQuiz{
 		Fraction f2 = new Fraction();
 		Fraction quiz = Fraction.question(f1,f2);
 		System.out.println(quiz);
-		Fraction ans = new Fraction(in.nextInt(),in.nextInt());
+		Fraction ans = new Fraction(in.nextLine());
+		
 	}
 }
